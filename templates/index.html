@@ -4,110 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weed Classifier</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-        }
-        input[type="file"] {
-            margin-top: 10px;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        #result-section {
-            margin-top: 20px;
-        }
-        #result-section img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        #result-text {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Weed Image Classifier</h1>
-        <form id="upload-form" enctype="multipart/form-data">
-            <input type="file" id="file-input" name="file" accept="image/*">
-            <button type="submit">Classify</button>
-        </form>
-        <div id="result-section">
-            <img id="uploaded-image" src="#" alt="Uploaded Image" style="display: none;">
-            <p id="result-text"></p>
-        </div>
-    </div>
-    <script>
-        document.getElementById('upload-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
+    <header>
+        <nav>
+            <div class="logo">Weed Classifier</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            const fileInput = document.getElementById('file-input');
-            const file = fileInput.files[0];
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>AI-Powered Weed Identification</h1>
+                <p>Upload an image of a plant to instantly classify it as a weed or not. Our state-of-the-art model provides accurate predictions to help you manage your garden or crops.</p>
+                <div class="upload-area">
+                    <div class="upload-card" id="upload-card">
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <label for="file-input" class="upload-label">
+                                <span class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></span>
+                                <span class="upload-text" id="upload-text">Drag & Drop or Click to Upload</span>
+                            </label>
+                            <input type="file" id="file-input" name="file" accept="image/*" hidden>
+                        </form>
+                    </div>
+                    <button type="button" class="classify-btn" id="classify-btn" disabled>Classify</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section" id="results-section">
+            <div class="progress-bar-container" id="progress-bar-container" style="display: none;">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
             
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const imgElement = document.getElementById('uploaded-image');
-                    imgElement.src = event.target.result;
-                    imgElement.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
+            <div class="result-container" id="result-container" style="display: none;">
+                <div class="result-card">
+                    <h2>Prediction Results</h2>
+                    <div class="image-container">
+                        <img id="uploaded-image" src="#" alt="Uploaded Image">
+                    </div>
+                    <div class="prediction-details">
+                        <p id="result-text"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            fetch('/predict', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                const resultTextElement = document.getElementById('result-text');
-                if (data.error) {
-                    resultTextElement.textContent = `Error: ${data.error}`;
-                    resultTextElement.style.color = 'red';
-                } else {
-                    resultTextElement.innerHTML = `Prediction: <strong>${data.prediction}</strong><br>Confidence: <strong>${data.confidence}</strong>`;
-                    resultTextElement.style.color = '#333';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                const resultTextElement = document.getElementById('result-text');
-                resultTextElement.textContent = 'An error occurred during prediction.';
-                resultTextElement.style.color = 'red';
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2025 Weed Classifier. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

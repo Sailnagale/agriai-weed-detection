@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Weed Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Weed Classifier</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="about-content">
+                <h1>About the Project</h1>
+                <p>This project uses a machine learning model to classify images of weeds. The model was trained using a custom dataset of various weed species to provide accurate and reliable predictions.</p>
+                
+                <h2>Weed Detection Model Training - Steps Overview</h2>
+                <div class="training-steps-container">
+                    <div class="training-step">
+                        <h3>Google Drive Integration</h3>
+                        <p>Mounted Google Drive to access and store datasets and trained models.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Data Loading & Preparation</h3>
+                        <ul>
+                            <li>Loaded weed species dataset from Google Drive.</li>
+                            <li>Automatically identified classes (weed categories).</li>
+                            <li>Split data into training (80%) and validation (20%) sets.</li>
+                        </ul>
+                    </div>
+                    <div class="training-step">
+                        <h3>Data Augmentation</h3>
+                        <p>Applied transformations such as flipping, rotation, zooming, and translation. This improved dataset diversity and helped prevent overfitting.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Transfer Learning with MobileNetV2</h3>
+                        <p>Used MobileNetV2 pre-trained on ImageNet as the base model. It was fine-tuned with custom layers for binary classification of weed species.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Model Compilation</h3>
+                        <ul>
+                            <li><strong>Optimizer:</strong> Adam (learning rate 0.0001).</li>
+                            <li><strong>Loss Function:</strong> Binary Crossentropy (for two-class classification).</li>
+                            <li><strong>Metrics:</strong> Accuracy.</li>
+                        </ul>
+                    </div>
+                    <div class="training-step">
+                        <h3>Model Training</h3>
+                        <p>The model was trained for 15 epochs on the augmented dataset and its performance was evaluated using validation accuracy and loss.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Model Saving</h3>
+                        <p>The trained model was saved to Google Drive for future use and deployment.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Training Visualization</h3>
+                        <p>Plotted accuracy and loss graphs for both training and validation sets to monitor performance.</p>
+                    </div>
+                    <div class="training-step">
+                        <h3>Prediction Example</h3>
+                        <p>Tested the model on a sample image from the dataset, and prediction results with a confidence percentage were displayed.</p>
+                    </div>
+                </div>
+
+                <h2>Prediction Script – Key Steps</h2>
+                <div class="training-steps-container">
+                    <div class="training-step">
+                        <h3>Mounted Google Drive to access model and test image.</h3>
+                    </div>
+                    <div class="training-step">
+                        <h3>Loaded the trained weed classification model.</h3>
+                    </div>
+                    <div class="training-step">
+                        <h3>Defined class names and selected a test image.</h3>
+                    </div>
+                    <div class="training-step">
+                        <h3>Preprocessed the image (resize & batch format).</h3>
+                    </div>
+                    <div class="training-step">
+                        <h3>Made prediction and displayed result with confidence score.</h3>
+                    </div>
+                    <div class="training-step">
+                        <h3>Visualized the image with predicted label.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Weed Classifier. All rights reserved.</p>
+    </footer>
+</body>
+</html>
