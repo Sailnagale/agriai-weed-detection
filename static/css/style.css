@@ -334,3 +334,90 @@ main {
     margin-right: 10px;
     color: #2e7d32;
 }
+
+/* ... (existing styles from previous responses) ... */
+
+/* --- Contact Page Specific Styles --- */
+.contact-section {
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: fadeIn 1s ease-in-out;
+    text-align: center;
+}
+
+.contact-section h1 {
+    font-size: 2.8rem;
+    color: #2e7d32;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: #5a5a5a;
+}
+
+.team-card {
+    background-color: #f0fdf2;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+}
+
+.team-card h2 {
+    color: #4CAF50;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.member-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.member-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4CAF50;
+    transition: border-color 0.3s ease;
+}
+
+.member-card h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.member-card p {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

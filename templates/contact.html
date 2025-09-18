@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Weed Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Weed Classifier</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="contact-content">
+                <h1>Contact Us</h1>
+                <p>Feel free to get in touch with our team of developers.</p>
+
+                <div class="team-card">
+                    <h2>Team: Null Resolver</h2>
+                    <div class="team-members">
+                        <div class="member-card">
+                            <img src="{{ url_for('static', filename='images/sail.jpg') }}" alt="Sail Nagale">
+                            <h3>Sail Nagale</h3>
+                            <p>Developer</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="{{ url_for('static', filename='images/aditya.jpg') }}" alt="Aditya Mane">
+                            <h3>Aditya Mane</h3>
+                            <p>Developer</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="{{ url_for('static', filename='images/akash.jpg') }}" alt="Akashkumar Kushwaha">
+                            <h3>Akashkumar Kushwaha</h3>
+                            <p>Developer</p>
+                        </div>
+                        <div class="member-card">
+                            <img src="{{ url_for('static', filename='images/mayur.jpg') }}" alt="Mayur Muskawad">
+                            <h3>Mayur Muskawad</h3>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Weed Classifier. All rights reserved.</p>
+    </footer>
+</body>
+</html>

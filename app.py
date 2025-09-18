@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 # --- Model Loading and Configuration ---
+# The model file path is now correct based on your file structure
 model_load_path = 'weed_binary_classifier_model.keras'
 img_height = 224
 img_width = 224
@@ -19,8 +20,10 @@ except Exception as e:
     print(f"Error loading model: {e}")
     exit()
 
+# This list must match the alphabetical order of your training dataset's folders
 class_names = ['0.Kena_(Commplina_benghalensio)', '1..Lavhala_(Cyperus_Rotundus)']
 
+# Set the upload folder and allowed file extensions
 UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -36,6 +39,10 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
